@@ -81,7 +81,11 @@ void ComputerPicks()
 	// Check if there is 2 in a row
 	for (int i = 0; i < 5; i++)
 	{
-		if ()
+		// Check top row
+		if ((boardTable[i][0] && boardTable[i][2] == 'X') || (boardTable[i][0] && boardTable[i][4] == 'X') || (boardTable[i][2] && boardTable[i][4] == 'X'))
+		{
+
+		}
 	}
 }
 
