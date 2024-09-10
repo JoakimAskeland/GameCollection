@@ -8,6 +8,7 @@ void FillBoard(char playerChoice);
 void ComputerPicks();
 void TicyTacy();
 
+int squaresFilled = 0;
 char boardTable[5][5] = { {' ', '|', ' ', '|', ' '}, 
 							{'-', '-', '-', '-', '-'}, 
 							{' ', '|', ' ', '|', ' '}, 
@@ -74,6 +75,8 @@ void FillBoard(char playerChoice)
 		cin >> newInput;
 		FillBoard(newInput);
 	}
+
+	squaresFilled++;
 }
 
 void ComputerPicks()
@@ -81,6 +84,15 @@ void ComputerPicks()
 	// Check if there is 2 in a row
 	for (int i = 0; i < 5; i++)
 	{
+		if (squaresFilled <= 1)
+		{
+			if (boardTable[2][2] == ' ')
+			{
+				boardTable[2][2] = 'O';
+				squaresFilled++;
+				break;
+			}
+		}
 		// Check top row
 		if ((boardTable[i][0] && boardTable[i][2] == 'X') || (boardTable[i][0] && boardTable[i][4] == 'X') || (boardTable[i][2] && boardTable[i][4] == 'X'))
 		{
@@ -103,5 +115,6 @@ void TicyTacy()
 
 		cin >> playerChoice;
 		FillBoard(playerChoice);
+		ComputerPicks();
 	}
 }
